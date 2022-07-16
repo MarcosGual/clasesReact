@@ -8,6 +8,11 @@ body {
   font-size: large;
 }
 
+.encabezado{
+  display: flex;
+  justify-content: space-between;
+}
+
 .header{
   margin-bottom: 10px;
   text-transform: capitalize;
