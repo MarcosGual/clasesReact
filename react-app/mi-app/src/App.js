@@ -29,9 +29,10 @@ function App() {
       <Titulo estilosPersonalizados={estilos.h1Alternativo} contenido="Clase sábados 0322" />
       {/* logo react con require */}
       <img src={require('./images/logo512.png')} alt='react img' />
-      <Lista contenido={listaElectrodomesticos} />
       {/* logo react con import (arriba) */}
       {/* <img src={logo} alt='react img' /> */}
+
+      <Lista contenido={listaElectrodomesticos} />
     </div>
   );
 }
