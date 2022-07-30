@@ -1,9 +1,9 @@
 import React from "react";
 
-function Titulo(props){
+function Titulo({estilosPersonalizados, contenido}){
     return(
         <div>
-            <h1 style={props.estilosPersonalizados}>{props.contenido}</h1>
+            <h1 style={estilosPersonalizados}>{contenido}</h1>
         </div>
     )
 }

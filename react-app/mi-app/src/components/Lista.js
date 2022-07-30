@@ -1,10 +1,13 @@
 import React from "react";
+import Item from './Item';
 
-function Lista(props) {
+function Lista({ contenido, children }) {
     return (
         <ul>
-            {props.contenido.map(x =>
-                <li key={x.id}>{x.nombre}</li>
+            {children}
+            {contenido.map((item) => (
+                <Item key={item.id} item={item} />
+            )
             )}
         </ul>
     )
