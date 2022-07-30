@@ -9,16 +9,18 @@ const Contador = () => {
     const sumar = () => setContador((prevState) => prevState + 1);
     const restar = () => setContador((prevState) => prevState - 1);
     const reiniciar = () => setContador(0);
-    const sumarCinco = () => setContador(prevState=>prevState+5);
+    const sumarCinco = () => setContador(prevState => prevState + 5);
+    const restarCinco = () => setContador(prevState => prevState - 5);
 
     return (
         <>
             <div style={{ display: 'flex', justifyContent: "center" }}>
+                <button onClick={restarCinco}>- 5</button>
                 <button onClick={restar}>-</button>
                 <h3>{contador}</h3>
                 <button onClick={sumar}>+</button>
-                <button onClick={reiniciar}>Reinicio</button>
                 <button onClick={sumarCinco}>+ 5</button>
+                <button onClick={reiniciar}>Reinicio</button>
             </div>
         </>
     )
