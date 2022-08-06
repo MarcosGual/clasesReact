@@ -1,40 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import Titulo from './components/Titulo';
-import logo from './images/logo512.png'; //con import
-import Lista from './components/Lista';
-import Busqueda from './components/Busqueda';
-import Contador from './components/Contador';
+import ListaUsuarios from './components/ListaUsuarios';
 
-function App() {
-  const estilos = {
-    h1: {
-      color: "red",
-      fontSize: "3em"
-    },
-    h1Alternativo: {
-      color: "brown",
-      fontSize: "2em"
-    }
+function ItemLista({ id, contenido, deleteItem }) {
+
+  function eventHandler() {
+    // console.log(contenido);
+    // console.log('Estoy en el manejador de eventos y este es el id: ', id);
+    deleteItem(id);
   }
 
-  let listaElectrodomesticos = [
-    { id: 1, nombre: "Heladera", precio: 90000 },
-    { id: 2, nombre: "Televisor", precio: 70000 },
-    { id: 3, nombre: "Microondas", precio: 60000 },
-    { id: 4, nombre: "Computadora", precio: 100000 }
-  ]
+  return (
+    <li key={id} onClick={eventHandler}>
+      {contenido}
+    </li>
+  )
+}
+
+function App() {
+
+  //Estado: variable contador (useState)
+  // const [contador, setCount] = useState(0);
+  //Efecto secundario: modificar el título del documento
+  // useEffect(() => {    // Actualiza el título del documento usando la API del navegador    
+  //   document.title = `Has clickeado ${contador} veces`;
+  // });
+
+  const [items, setItems] = useState([
+    { id: 1, actividad: "Desayunar" },
+    { id: 2, actividad: "Trabajo" },
+    { id: 3, actividad: "Almuerzo" },
+    { id: 4, actividad: "Gym" },
+    { id: 5, actividad: "Trabajo" },
+    { id: 6, actividad: "Cena" },
+    { id: 7, actividad: "Jugar" }
+  ]);
+
+  function borrarItem(identificador) {
+    const listaFiltrada = items.filter(item => item.id !== identificador);
+    setItems(listaFiltrada);
+  }
 
   return (
-    <div className="App">
-      <Titulo estilosPersonalizados={estilos.h1} contenido="Bienvenidos a la clase de React" />
-      <Titulo estilosPersonalizados={estilos.h1Alternativo} contenido="Clase sábados 0322" />
-      <Busqueda />
-      <Contador />
-      {/* <Lista contenido={listaElectrodomesticos}>
-        <Titulo estilosPersonalizados={estilos.h1Alternativo} contenido="Lista" />
-      </Lista> */}
-    </div>
+    <>
+      <h2>Lista de actividades</h2>
+      <ul>
+        {items.map((item) => (
+          // <li key={index}>{item.actividad}</li>
+          <ItemLista key={item.id} id={item.id} contenido={item.actividad}
+            deleteItem={borrarItem} />
+        ))}
+      </ul>
+
+      <ListaUsuarios items={items} />
+    </>
   );
 }
 
