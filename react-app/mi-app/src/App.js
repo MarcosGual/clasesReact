@@ -7,9 +7,10 @@ import Busqueda from './components/Busqueda';
 import Contador from './components/Contador';
 
 function App() {
+  
   const estilos = {
     h1: {
-      color: "red",
+      color: "black",
       fontSize: "3em"
     },
     h1Alternativo: {
