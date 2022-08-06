@@ -32,7 +32,6 @@ function App() {
       <h2>Lista de actividades</h2>
       <ul>
         {items.map((item) => (
-          // <li key={index}>{item.actividad}</li>
           <ItemLista key={item.id} id={item.id} contenido={item.actividad}
             deleteItem={borrarItem} />
         ))}
