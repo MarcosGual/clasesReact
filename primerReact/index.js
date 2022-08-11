@@ -6,49 +6,49 @@
 // 2- el elemento raíz o contenedor donde quiero renderizarlo
 // parecido al método appendChild()
 
-function Bienvenida() {
-  return;
-}
+// function Bienvenida() {
+//   return;
+// }
 
-function BarraNav() {
-  return (
-    <div className="encabezado">
-      <h1>Bienvenidos a React!</h1>
-      <nav>
-        <ul className="nav">
-          <li>Inicio</li>
-          <li>Recetas</li>
-          <li>Sobre Nosotros</li>
-        </ul>
-      </nav>
-    </div>
-  );
-}
+// function BarraNav() {
+//   return (
+//     <div className="encabezado">
+//       <h1>Bienvenidos a React!</h1>
+//       <nav>
+//         <ul className="nav">
+//           <li>Inicio</li>
+//           <li>Recetas</li>
+//           <li>Sobre Nosotros</li>
+//         </ul>
+//       </nav>
+//     </div>
+//   );
+// }
 
-function Titulo() {
-  return <h2 className="subtitulo">Lista de Compras</h2>;
-}
+// function Titulo() {
+//   return <h2 className="subtitulo">Lista de Compras</h2>;
+// }
 
-function Lista() {
-  return (
-    <ul>
-      <li>Pan</li>
-      <li>Salchichas</li>
-      <li>Mayonesa</li>
-      <li>Mostaza</li>
-    </ul>
-  );
-}
+// function Lista() {
+//   return (
+//     <ul>
+//       <li>Pan</li>
+//       <li>Salchichas</li>
+//       <li>Mayonesa</li>
+//       <li>Mostaza</li>
+//     </ul>
+//   );
+// }
 
-ReactDOM.render(
-  <div>
-    <Bienvenida />
-    <BarraNav />
-    <Titulo />
-    <Lista />
-  </div>,
-  document.querySelector("#raiz")
-);
+// ReactDOM.render(
+//   <div>
+//     <Bienvenida />
+//     <BarraNav />
+//     <Titulo />
+//     <Lista />
+//   </div>,
+//   document.querySelector("#raiz")
+// );
 
 //Con Vainilla Javascript
 // const $contenedor = document.querySelector("#raiz");
@@ -74,17 +74,19 @@ ReactDOM.render(
 // console.log($pagina);
 // ReactDOM.render($pagina, document.getElementById('raiz'));
 
-const $navBar = (
-  <div className="encabezado">
-    <h1>Numen Restaurante</h1>
-    <nav>
-      <ul className="nav">
-        <li>Inicio</li>
-        <li>Menú</li>
-        <li>Contacto</li>
-      </ul>
-    </nav>
-  </div>
-);
+// const $navBar = (
+//   <div className="encabezado">
+//     <h1>Numen Restaurante</h1>
+//     <nav>
+//       <ul className="nav">
+//         <li>Inicio</li>
+//         <li>Menú</li>
+//         <li>Contacto</li>
+//       </ul>
+//     </nav>
+//   </div>
+// );
 
-ReactDOM.render($navBar, document.getElementById("raiz"));
+// ReactDOM.render($navBar, document.getElementById("raiz"));
+
+
