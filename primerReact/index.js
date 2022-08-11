@@ -89,4 +89,40 @@
 
 // ReactDOM.render($navBar, document.getElementById("raiz"));
 
+const root = document.getElementById('raiz');
+// const rootElement = document.getElementById('root');
+// const root = createRoot(rootElement);
 
+function MiPagina() {
+  return (
+    <div>
+			<header>
+				<nav>
+		      <img src='./react-logo.png' width='150px' />
+				</nav>
+			</header>
+      <h1>Mi sitio con React</h1>
+      <h3>Curiosidades</h3>
+      <ol>
+        <li>Fue lanzado en 2013</li>
+        <li>Mantenimiento por Facebook</li>
+        <li>Es utilizado por miles de aplicaciones, incluyendo mobile</li>
+      </ol>
+      <h3>Razones para utilizarlo!</h3>
+      <ol>
+        <li>Es componible</li>
+        <li>Es declarativo</li>
+        <li>Es una habilidad contratable</li>
+        <li>Está mantenido por un equipo competente</li>
+      </ol>
+			<footer>
+				<small>© 2021 Numen. Todos los derechos reservados</small>
+			</footer>
+    </div>
+  )
+}
+
+// root.append(JSON.stringify(miPagina));
+// ReactDOM.render(miPagina(), root);
+
+ReactDOM.render(<MiPagina />, root);
