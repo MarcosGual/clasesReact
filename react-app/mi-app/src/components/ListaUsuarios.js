@@ -1,27 +1,9 @@
-import React, {useState, useEffect} from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import useAxios from '../hooks/useAxios';
 
-const ListaUsuarios = ({items}) => {
+const ListaUsuarios = () => {
 
-    const [users, setUsers] = useState([]);
-    const [error, setError] = useState({
-        message: '',
-        isError: false
-    });
-    const [isLoading, setIsLoading] = useState(false);
-
-    useEffect(() => {
-        setIsLoading(true);
-        axios('https://jsonplaceholder.typicode.com/users')
-            .then(res => setUsers(res.data)) //caso de éxito
-            .catch(err => setError({
-                message: err.message,
-                isError: true
-            }))
-            .finally(() => {
-                setTimeout(() => setIsLoading(false), 2000)
-            })
-    }, [items])
+    const { data, isLoading, error } = useAxios('https://jsonplaceholder.typicode.com/users');
 
     return (
         <div>
@@ -29,7 +11,7 @@ const ListaUsuarios = ({items}) => {
             <ul>
                 {error.isError ? <h4>{error.message}</h4>
                     : isLoading ? <h4>Cargando...</h4> :
-                        users.map(user => (
+                        data.map(user => (
                             <li key={user.id}>{user.name}</li>
                         ))}
             </ul>

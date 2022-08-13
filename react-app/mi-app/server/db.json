@@ -1,0 +1,46 @@
+{
+    "hamburguesas": [
+        {
+            "id": 1,
+            "nombre": "Cheeseburger",
+            "ingredientes": [
+                "queso",
+                "carne",
+                "cebolla"
+            ],
+            "precio": 1500
+        },
+        {
+            "id": 2,
+            "nombre": "Argentina",
+            "ingredientes": [
+                "carne",
+                "queso",
+                "jamón",
+                "huevo",
+                "tomate"
+            ],
+            "precio": 1700
+        },
+        {
+            "id": 3,
+            "nombre": "Vegan",
+            "ingredientes": [
+                "seitán",
+                "tomate",
+                "lechuga"
+            ],
+            "precio": 1800
+        },
+        {
+            "id": 4,
+            "nombre": "Americana",
+            "ingredientes": [
+                "carne",
+                "queso",
+                "tocino",
+                "huevo"
+            ]
+        }
+    ]
+}
