@@ -5,7 +5,7 @@ const Busqueda = () => {
     const [terminoBusqueda, setTermino]= useState('');
 
     const manejarCambio = (event) => {
-        // console.log(event);
+        console.log(event);
         // console.log(event.target.value);
 
         // terminoBusqueda=event.target.value;

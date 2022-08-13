@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import ListaUsuarios from './components/ListaUsuarios';
 import ItemLista from './components/ItemLista';
+import Busqueda from './components/Busqueda';
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
 
   return (
     <>
+      <Busqueda />
       <h2>Lista de actividades</h2>
       <ul>
         {items.map((item) => (
