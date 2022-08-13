@@ -33,9 +33,6 @@ export function UserProvider(props) {
     // los estados a través del atributo "value"
     return (
         <contextoUsuario.Provider value={user} >
-            {/* <div style={{ textAlign: "center" }}>
-                <button onClick={cambiaLogin}>Cambia Login</button>
-            </div> */}
             <userToggleContext.Provider value={cambiaLogin}>
                 {props.children}
             </userToggleContext.Provider>
