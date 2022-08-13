@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import Hijo from "../components/Hijo";
 
 //contexto usuario - creación
 const contextoUsuario = React.createContext();
@@ -30,6 +29,8 @@ export function UserProvider(props) {
             })
         }
     }
+    //en contextoUsuario.Provider pasamos 
+    // los estados a través del atributo "value"
     return (
         <contextoUsuario.Provider value={user} >
             {/* <div style={{ textAlign: "center" }}>
