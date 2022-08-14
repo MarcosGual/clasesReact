@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
 
+//creamos los contextos a utilizar:
 //contexto usuario - creación
 const contextoUsuario = React.createContext();
 //contexto para el botón - creación
 const userToggleContext = React.createContext();
-//creamos el contexto a utilizar
 
 //custom hook para utilizar el contexto de usuario
 export function useUserContext(){
@@ -30,7 +30,7 @@ export function UserProvider(props) {
         }
     }
     //en contextoUsuario.Provider pasamos 
-    // los estados a través del atributo "value"
+    // los estados globales (contextos) a través del atributo "value"
     return (
         <contextoUsuario.Provider value={user} >
             <userToggleContext.Provider value={cambiaLogin}>
