@@ -2,38 +2,45 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: monospace;
+    font-size: 20px;
     color: whitesmoke;
 }
 
-header {
+body{
+    background-color: #1f1d26;
+}
+
+header{
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: #1F1D26;
+    background-color: #1f1d26;
+    height: 20vh;
 }
 
-header h1 {
-    color: #50C0DF;
+header h1{
+    color: #50c0df;
 }
 
-header nav ul {
+header nav ul{
     display: flex;
-    flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+    /* gap: 20px; */
 }
 
-header nav ul li {
+header nav ul li{
     list-style: none;
 }
 
-header nav ul li+li {
+header nav ul li+li{
     margin-left: 20px;
 }
 
-body{
-    background-color: #24262E;
+main{
+    background-color: #24262e;
+    height: 65vh;
 }
 
 h3{
@@ -41,5 +48,15 @@ h3{
 }
 
 ol{
-    margin: 30px 40px;
+    margin: 30px 35px;
+}
+
+ol li{
+    list-style-type: disc;
+}
+
+footer{
+    font-size: 15px;
+    background-color: #1f1d26;
+    height: 15vh;
 }
