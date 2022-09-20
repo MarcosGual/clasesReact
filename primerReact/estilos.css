@@ -16,7 +16,6 @@ header{
     justify-content: space-between;
     align-items: center;
     background-color: #1f1d26;
-    height: 20vh;
 }
 
 header h1{
@@ -40,11 +39,11 @@ header nav ul li+li{
 
 main{
     background-color: #24262e;
-    height: 65vh;
+    height: 70vh;
 }
 
 h3{
-    margin: 20px;
+    margin: 30px;
 }
 
 ol{
@@ -58,5 +57,4 @@ ol li{
 footer{
     font-size: 15px;
     background-color: #1f1d26;
-    height: 15vh;
 }
