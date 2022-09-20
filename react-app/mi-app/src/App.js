@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import Hijo from './components/Hijo'
 import ListaHamburguesas from './components/ListaHamburguesas';
@@ -9,11 +9,6 @@ function App() {
 
   return (
     <>
-      <UserProvider>
-        <Hijo />
-      </UserProvider>
-      <ListaHamburguesas />
-      <ListaUsuarios />
     </>
   );
 }
