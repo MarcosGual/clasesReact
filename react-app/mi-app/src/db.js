@@ -26,4 +26,47 @@ const listaElectrodomesticos = [
   },
 ];
 
-export default listaElectrodomesticos;
+const chistesDb = [
+  {
+    linea: "Cómo se llama el hermano de Bruce Lee",
+    punchline: "Broco Lee",
+  },
+  {
+    linea: "Una vez conté un chiste químico",
+    punchline: "No hubo reaccion",
+  },
+  {
+    linea: "Eliminar correos no deseados es muy fácil",
+    punchline: "Es pan comido",
+  },
+];
+
+const infoTarjetas=[
+  {
+    id: 1,
+    descripcion: 'Lecciones con Katie Zaferes',
+    precio: 9060,
+    pais: 'USA',
+    puntuacion: 5.0,
+    img: './img/katie.png' 
+  },
+  {
+    id: 2,
+    descripcion: 'Lecciones con Katie Zaferes',
+    precio: 9060,
+    pais: 'USA',
+    puntuacion: 5.0 ,
+    img: './img/boda.png' 
+  },
+  {
+    id: 3,
+    descripcion: 'Lecciones con Katie Zaferes',
+    precio: 9060,
+    pais: 'USA',
+    puntuacion: 5.0 ,
+    img: './img/mb.png' 
+  }
+]
+
+// export default {listaElectrodomesticos, chistesDb};
+export default chistesDb;

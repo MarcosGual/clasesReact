@@ -1,21 +1,12 @@
-import React from "react";
+import React from 'react';
+import LogoImg from '../img/logo.png'
 
 const NavBar = () => {
-  const titulo = "Segunda Clase de React";
-
-  const estilosTitulo = {
-    color: "green",
-    margin: "1rem",
-    padding: 5,
-    fontSize: "2em",
-    fontWeight: "bolder",
-  };
-
-  return (
-    <nav>
-      <h1 style={estilosTitulo}>{titulo}</h1>
-    </nav>
-  );
-};
+    return (
+        <nav>
+            <img src={LogoImg} alt='logo' className='nav--logo' />
+        </nav>
+    );
+}
 
 export default NavBar;

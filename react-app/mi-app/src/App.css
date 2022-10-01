@@ -1,22 +1,80 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
 
-.App-header {
-  background-color: #224486;
-  min-height: 100vh;
+body {
+  margin: 0;
+  font: "Poppins", sans-serif;
+}
+
+nav {
+  height: 70px;
+  display: flex;
+  background-color: #fff;
+  padding: 20px 35px;
+  box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1);
+}
+
+section {
+  padding: 20px;
+}
+
+.encabezado {
   display: flex;
   flex-direction: column;
+}
+
+.encabezado--img {
+  max-width: 500px;
+  align-self: center;
+}
+
+.encabezado--titulo {
+  margin-bottom: 16px;
+}
+
+.encabezado--texto {
+  margin-top: 0px;
+}
+
+.card{
+  width: 175px;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  font-size: 12px;
+  gap: 0;
+}
+
+.card--imagen{
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  /* object-fit: cover; */
+}
+
+.card--stats{
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.card--estrella{
+  height: 14px;
 }
 
-li {
-  color: darkred;
+.card--titulo{
+  overflow: hidden;
+}
+
+.gris{
+  color: grey;
+}
+
+.negrita{
+  font-weight: bold;
+}
+
+.card p{
+  margin-top: 4px;
+  margin-bottom: 2px;
 }
