@@ -1,7 +1,7 @@
 import React from 'react';
 import useImage from '../hooks/useImage';
 
-const Tarjeta = ({tarjeta}) => {
+const Tarjeta = () => {
     return (
         <div className='card'>
             <img className="card--imagen" src={useImage('./img/katie.png')} alt="" />
