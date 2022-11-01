@@ -1,11 +1,10 @@
 import "./App.css";
-import NavBar from "./components/NavBar";
-import Rutas from "./components/Rutas";
+import Contador from "./components/Contador";
 
 function App() {
   return (
     <>
-      <Rutas />
+      <Contador />
     </>
   );
 }
