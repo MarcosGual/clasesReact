@@ -1,10 +1,13 @@
 import "./App.css";
-import Contador from "./components/Contador";
+import Carrito from "./components/Carrito";
+import ContextoTemaProvider from "./providers/contextoTemaProvider";
 
 function App() {
   return (
     <>
-      <Contador />
+      <ContextoTemaProvider>
+        <Carrito />
+      </ContextoTemaProvider>
     </>
   );
 }
