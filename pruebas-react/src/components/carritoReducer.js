@@ -87,10 +87,6 @@ export function carritoReducer(state, action) {
           };
     }
     case TYPES.REMOVE_ALL_ITEMS: {
-      let itemAEliminar = state.carrito.find(
-        (item) => item.id === action.payload
-      );
-
       return {
         ...state,
         carrito: state.carrito.filter((item) => item.id !== action.payload),
