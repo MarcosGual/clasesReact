@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import Boton from "./Boton";
 import { useUserContext } from "../providers/UserContext";
+import { useThemeContext } from "../providers/ThemeContext";
 
 const Tarjeta = (props) => {
 
+    const { isDarkTheme } = useThemeContext();
     const { descripcion, nombre } = props.lugar;
-
     const { userName, setUserName } = useUserContext();
 
     return (
@@ -13,7 +14,9 @@ const Tarjeta = (props) => {
             border: "solid 2px black",
             width: "200px",
             height: "275px",
-            textAlign: "center"
+            textAlign: "center",
+            backgroundColor: isDarkTheme ? '#222222' : null,
+            color: isDarkTheme ? '#ffffff' : null
         }}>
             <figcaption>
                 <h2>{nombre}</h2>
