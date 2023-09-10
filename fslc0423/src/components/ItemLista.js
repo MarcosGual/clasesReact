@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-const ItemLista = (props) => {
+const ItemLista = ({ producto }) => {
     // console.log(props.producto);
 
-    // if (props.producto.stock < 1) return null;
+    const { nombre, precio, stock } = producto;
+
+    useEffect(() => {
+        console.log('Item de lista cargado: ' + nombre);
+
+        return ()=>{
+            console.log('Item de lista desmontado');
+        }; //utilizando la fase de vida DESMONTAJE
+    }, []) //array de dependencias vacío --> fase de vida MONTAJE
 
     return (
         <>
             {/* renderizado condicional */}
-            {(props.producto.stock > 0) && <li>
-                Producto: {props.producto.nombre} || Precio: $ {props.producto.precio}
+            {(stock > 0) && <li>
+                Producto: {nombre} || Precio: $ {precio}
             </li>}
         </>
     );

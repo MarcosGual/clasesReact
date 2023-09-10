@@ -5,6 +5,10 @@ import ListaSimple from './components/ListaSimple';
 import Titulo from './components/Titulo';
 import Contador from './components/Contador';
 import Buscador from './components/Buscador';
+import Blog from './components/Blog';
+import Main from './components/Main';
+import { ProductosProvider } from './providers/ProductosProvider';
+import Contacto from './components/Contacto';
 
 function App() {
   let titulo = 'Bienvenidos a React!';
@@ -33,12 +37,13 @@ function App() {
   return (
     <>
       <Titulo textoTitulo={titulo} />
-      <Buscador />
-      {/* <Lista /> */}
+      <ProductosProvider>
+        <Main />
+      </ProductosProvider>
+      <Contacto />
+      {/* <Blog /> */}
       {/* <ListaSimple listaDeEquipos={equiposDeFutbol} />
       <button onClick={reaccionHandler}>React!</button> */}
-      <Pregunta />
-      <Contador />
     </>
   );
 }
