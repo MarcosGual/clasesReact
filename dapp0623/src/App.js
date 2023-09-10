@@ -1,11 +1,12 @@
 import './App.css';
-import Contador from './components/Contador';
+import Carrito from './components/carrito/Carrito';
+import Contador from './components/ejemplos/Contador';
 
 function App() {
   return (
     <>
       <h1>UseReducer</h1>
-      <Contador />
+      <Carrito />
     </>
   );
 }
