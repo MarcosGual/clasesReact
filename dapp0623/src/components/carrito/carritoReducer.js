@@ -1,16 +1,7 @@
 import { TYPES } from "./actions"
 
 export const carritoInitialState = {
-    productos: [
-        { id: 1, nombre: 'Producto A', precio: 1500, src: '', stock: 20 },
-        { id: 2, nombre: 'Producto B', precio: 1800, src: '', stock: 20 },
-        { id: 3, nombre: 'Producto C', precio: 1200, src: '', stock: 20 },
-        { id: 4, nombre: 'Producto D', precio: 3100, src: '', stock: 20 },
-        { id: 5, nombre: 'Producto E', precio: 2700, src: '', stock: 20 },
-        { id: 6, nombre: 'Producto F', precio: 3500, src: '', stock: 20 },
-        { id: 7, nombre: 'Producto G', precio: 1300, src: '', stock: 20 },
-        { id: 8, nombre: 'Producto H', precio: 2900, src: '', stock: 20 },
-    ],
+    productos: [],
     carrito: []
 }
 
@@ -51,6 +42,13 @@ export const carritoReducer = (state, action) => {
         }
         case TYPES.CLEAR_CART: {
             return carritoInitialState;
+        }
+        case TYPES.READ_STATE: {
+            return {
+                ...state,
+                productos: action.payload[0],
+                carrito: action.payload[1]
+            }
         }
         default: return state;
     }

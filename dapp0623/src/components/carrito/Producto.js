@@ -6,9 +6,12 @@ const Producto = ({ producto, addToCart }) => {
     const { id, nombre, precio, src } = producto;
 
     return (
-        <div className='col-sm-6 col-md-4'>
-            <h4>{nombre}</h4>
-            <h5>$ {precio}</h5>
+        <div className='col-sm-6 col-md-4 text-center mb-4'>
+            <div className='mb-2'>
+                <h4>{nombre}</h4>
+                <img width={150} src={src} alt={nombre} />
+                <h5 className='mt-2'>$ {precio}</h5>
+            </div>
             <button onClick={() => addToCart(id)} className='btn btn-success btn-sm'>Agregar</button>
         </div>
     );

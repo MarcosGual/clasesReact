@@ -1,12 +1,10 @@
 import './App.css';
-import Carrito from './components/carrito/Carrito';
-import Contador from './components/ejemplos/Contador';
+import Crud from './components/crud/Crud';
 
 function App() {
   return (
     <>
-      <h1>UseReducer</h1>
-      <Carrito />
+      <Crud />
     </>
   );
 }
