@@ -1,14 +1,8 @@
+import axios from "axios";
 import { TYPES } from "./types";
 
 export const carritoInitialState = {
-    products: [
-        { id: 1, nombre: "Producto A", precio: 500, stock: 20, src: "" },
-        { id: 2, nombre: "Producto B", precio: 800, stock: 10, src: "" },
-        { id: 3, nombre: "Producto C", precio: 900, stock: 15, src: "" },
-        { id: 4, nombre: "Producto D", precio: 400, stock: 6, src: "" },
-        { id: 5, nombre: "Producto E", precio: 750, stock: 23, src: "" },
-        { id: 6, nombre: "Producto F", precio: 350, stock: 5, src: "" }
-    ],
+    products: [],
     cart: []
 }
 
@@ -19,12 +13,17 @@ export const carritoReducer = (state, action) => {
 
             const itemEnCarrito = state.cart.find(item => item.id === action.payload);
 
-            return itemEnCarrito ? {
+            let carritoActualizado = [];
+
+            if (itemEnCarrito) {
+                carritoActualizado = state.cart.map(item => item.id === nuevoItem.id ? { ...item, cantidad: item.cantidad + 1 } : item)
+            } else {
+                carritoActualizado = [...state.cart, { ...nuevoItem, cantidad: 1 }]
+            }
+
+            return {
                 ...state,
-                cart: state.cart.map(item => item.id === nuevoItem.id ? { ...item, cantidad: item.cantidad + 1 } : item)
-            } : {
-                ...state,
-                cart: [...state.cart, { ...nuevoItem, cantidad: 1 }]
+                cart: carritoActualizado
             }
         }
         case TYPES.REMOVE_ITEM: {
@@ -48,6 +47,13 @@ export const carritoReducer = (state, action) => {
         }
         case TYPES.CLEAR_CART: {
             return carritoInitialState;
+        }
+        case TYPES.READ_STATE: {
+            return {
+                ...state,
+                products: action.payload[0],
+                cart: action.payload[1]
+            }
         }
         default:
             return state;

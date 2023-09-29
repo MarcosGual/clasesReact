@@ -1,0 +1,48 @@
+{
+  "productos": [
+    {
+      "id": 1,
+      "nombre": "Producto A",
+      "precio": 1500,
+      "src": "https://cdn-icons-png.flaticon.com/512/5257/5257945.png",
+      "stock": 20
+    },
+    {
+      "id": 2,
+      "nombre": "Producto B",
+      "precio": 1800,
+      "src": "https://i.pinimg.com/originals/bb/c3/5e/bbc35e5e40de2799464a1fd65047021b.png",
+      "stock": 20
+    },
+    {
+      "id": 3,
+      "nombre": "Producto C",
+      "precio": 1200,
+      "src": "https://cdn-icons-png.flaticon.com/512/2589/2589973.png",
+      "stock": 20
+    },
+    {
+      "id": 4,
+      "nombre": "Producto D",
+      "precio": 3100,
+      "src": "https://cdn-icons-png.flaticon.com/512/2093/2093798.png",
+      "stock": 20
+    },
+    {
+      "id": 5,
+      "nombre": "Producto E",
+      "precio": 2700,
+      "src": "https://d338t8kmirgyke.cloudfront.net/icons/icon_pngs/000/014/791/original/shorts_5798614.png",
+      "stock": 20
+    },
+    {
+      "id": 6,
+      "nombre": "Producto F",
+      "precio": 3500,
+      "src": "https://cdn-icons-png.flaticon.com/512/976/976228.png",
+      "stock": 20
+    }
+  ],
+  "carrito": [],
+  "usuarios": []
+}

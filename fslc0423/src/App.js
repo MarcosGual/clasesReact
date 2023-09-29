@@ -1,11 +1,12 @@
 import './App.css';
-import Rutas from './components/react-router/Rutas';
+import BreakingBad from './components/BreakingBad';
+import Cart from './components/carrito/Cart';
 
 function App() {
 
   return (
     <>
-      <Rutas />
+      <Cart />
     </>
   );
 }
