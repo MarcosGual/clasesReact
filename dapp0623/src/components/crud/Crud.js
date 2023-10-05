@@ -3,62 +3,74 @@ import { useState } from 'react';
 import CrudForm from './CrudForm';
 import CrudList from './CrudList';
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
+import Loader from '../Loader';
 
 //CRUD: CREATE, READ, UPDATE, DELETE (crear, leer/obtener, actualizar, borrar)
 const Crud = () => {
 
-    const [users, setUsers] = useState([]); //lista de usuarios 
-    const [user, setUser] = useState('');
+    const [usersDb, setUsersDb] = useState([]);
+    const [userToEdit, setUserToEdit] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
 
-    const actualizarListaUsuarios = async () => {
-        const res = await axios.get('http://localhost:8080/usuarios');
-        const usuarios = res.data;
+    const updateUserList = async () => {
+        try {
+            setIsLoading(true);
+            const res = await axios.get('http://localhost:8080/usuarios');
+            const usuarios = res.data;
 
-        if (usuarios.length > 0) {
-            setUsers(usuarios);
+            if (usuarios.length > 0) {
+                setUsersDb(usuarios);
+            }
+        } catch (error) {
+            console.log('error al obtener usuarios: ' + error.message)
+        } finally {
+            setIsLoading(false);
         }
     }
 
     useEffect(() => {
-        actualizarListaUsuarios();
+        updateUserList();
     }, []);
 
-    const addUser = async (user) => {
-        if (user) {
-            setUsers([...users, user])
+    const createUser = (user) => {
+        user.createdAt = Date.now().toLocaleString;
+        user.id = uuidv4();
 
-            //solicitud post --> para agregar datos a una base de datos (en este caso una api falsa)
-            const { data } = await axios.post('http://localhost:8080/usuarios', user, {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
+        setUsersDb([...usersDb, user]);
+    };
 
-            console.log(data);
+    const updateData = (user) => {
+        let newData = usersDb.map(el => el.id === user.id ? user : el)
+        setUsersDb(newData);
+    };
+
+    const deleteUser = (userId) => {
+        let isDelete = window.confirm(`Estás seguro de eliminar el registro con el id '${userId}`);
+
+        if (isDelete && userId) {
+            let newData = usersDb.filter(el => el.id !== userId);
+            setUsersDb(newData);
+        } else {
+            return;
         }
-    }
-
-    const editUser = (user) => {
-
-    }
-
-    const deleteUser = async (deletedUserId) => {
-
-        const deleteConfirmation = window.confirm('Desea eliminar el usuario?')
-
-        if (deleteConfirmation) {
-            const newUsersArray = users.filter(user => user.id !== deletedUserId);
-            setUsers(newUsersArray);
-
-            await axios.delete(`http://localhost:8080/usuarios/${deletedUserId}`)
-        }
-    }
+    };
 
     return (
         <div>
             <h2>CRUD con React</h2>
-            <CrudForm addUser={addUser} user={user} setUser={setUser} />
-            <CrudList users={users} deleteUser={deleteUser} />
+            <CrudForm
+                createUser={createUser}
+                updateData={updateData}
+                userToEdit={userToEdit}
+                setUserToEdit={setUserToEdit}
+            />
+            {isLoading && <Loader />}
+            {usersDb && <CrudList
+                users={usersDb}
+                setUserToEdit={setUserToEdit}
+                deleteUser={deleteUser}
+            />}
         </div>
     );
 }

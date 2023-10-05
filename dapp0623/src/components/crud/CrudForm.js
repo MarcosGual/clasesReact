@@ -1,55 +1,79 @@
-import React, { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import React, { useEffect, useState } from 'react';
 
-const CrudForm = ({ addUser, user, setUser }) => {
-    const [userName, setUserName] = useState('');
-    const [email, setEmail] = useState('');
+const initialForm = {
+    userName: "",
+    email: "",
+    id: null
+}
 
-    const handleAddUser = (e) => {
+const CrudForm = ({ createUser, updateUser, userToEdit, setUserToEdit }) => {
+
+    const [form, setForm] = useState(initialForm);
+
+    useEffect(() => {
+        if (userToEdit) {
+            setForm(userToEdit)
+        } else {
+            setForm(initialForm);
+        }
+    }, [userToEdit])
+
+    const handleChange = (e) => {
+        // console.log(e.target.name)
+
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value,
+        })
+
+        // console.log(form)
+    };
+
+    const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (userName !== '' && email !== '') {
-            const userId = uuidv4(); //generando ID
-
-            addUser({
-                userName: userName,
-                email: email,
-                id: userId
-            }) //agregando el usuario
-        } else {
-            window.alert('Completar los datos del formulario...')
+        if (!form.userName || !form.email) {
+            alert("Datos incompletos");
+            return;
         }
-    }
+        if (form.id === null) {
+            createUser(form);
+        } else {
+            updateUser(form);
+        }
 
-    const handleUserNameChange = (e) => {
-        setUserName(e.target.value)
-    }
+        handleReset();
+    };
 
-    const handleEmailChange = (e) => {
-        setEmail(e.target.value);
-    }
+    const handleReset = (e) => {
+        setForm(initialForm);
+        setUserToEdit(null);
+    };
 
     return (
         <div className='container-fluid'>
             <form>
-                <h3>Formulario</h3>
-                <label className='form-label' >Nombre de usuario: </label>
+                <h3>Usuarios</h3>
+                <label className='form-label' >Nombre de usuario </label>
                 <input
                     type='text'
-                    className='form-control'
+                    className='form-control mb-3'
                     placeholder='nombreDeUsuario'
-                    value={userName}
-                    onChange={handleUserNameChange}
+                    name='userName'
+                    value={form.userName}
+                    onChange={handleChange}
                 />
-                <label className='form-label' >E-mail: </label>
+                <label className='form-label' >E-mail </label>
                 <input
                     type='text'
                     className='form-control mb-3'
                     placeholder='usuario@mail.com'
-                    value={email}
-                    onChange={handleEmailChange}
+                    name='email'
+                    value={form.email}
+                    onChange={handleChange}
                 />
-                <button onClick={handleAddUser} className='btn btn-primary mb-3'>Enviar Datos</button>
+                <button className='btn btn-success mb-3' onClick={handleSubmit}>Enviar Datos</button>
+                <button className='btn btn-danger mb-3' onClick={handleReset}>Limpiar</button>
             </form>
         </div>
     );
