@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
 const initialForm = {
-    userName: "",
-    email: "",
+    userName: '',
+    email: '',
     id: null
 }
 
-const CrudForm = ({ createUser, updateUser, userToEdit, setUserToEdit }) => {
+const CrudForm = ({ addUser, userToEdit, setUserToEdit, updateUser }) => {
 
     const [form, setForm] = useState(initialForm);
 
@@ -18,62 +18,56 @@ const CrudForm = ({ createUser, updateUser, userToEdit, setUserToEdit }) => {
         }
     }, [userToEdit])
 
+    //manejar cambios en los inputs (nombre de usuario y e-mail)
     const handleChange = (e) => {
-        // console.log(e.target.name)
-
         setForm({
             ...form,
-            [e.target.name]: e.target.value,
+            [e.target.name]: e.target.value
         })
+    }
 
-        // console.log(form)
-    };
-
+    //manejar el botón de enviar (submit)
     const handleSubmit = (e) => {
         e.preventDefault();
 
         if (!form.userName || !form.email) {
-            alert("Datos incompletos");
+            alert('Por favor rellene los campos de nombre de usuario y e-mail...')
             return;
         }
-        if (form.id === null) {
-            createUser(form);
-        } else {
+
+        if (userToEdit) {
             updateUser(form);
+        } else {
+            addUser(form); //llamo a la función agregar usuario
         }
 
-        handleReset();
-    };
+        handleReset(e); //llamo al reset para limpiar el formulario
+    }
 
+    //manejar el botón de limpiar formulario (reset)
     const handleReset = (e) => {
+        e.preventDefault();
         setForm(initialForm);
         setUserToEdit(null);
-    };
+    }
 
     return (
-        <div className='container-fluid'>
+        <div className='container-fluid mb-5'>
+            <h3>Formulario</h3>
             <form>
-                <h3>Usuarios</h3>
-                <label className='form-label' >Nombre de usuario </label>
-                <input
-                    type='text'
-                    className='form-control mb-3'
-                    placeholder='nombreDeUsuario'
-                    name='userName'
-                    value={form.userName}
-                    onChange={handleChange}
-                />
-                <label className='form-label' >E-mail </label>
-                <input
-                    type='text'
-                    className='form-control mb-3'
-                    placeholder='usuario@mail.com'
-                    name='email'
-                    value={form.email}
-                    onChange={handleChange}
-                />
-                <button className='btn btn-success mb-3' onClick={handleSubmit}>Enviar Datos</button>
-                <button className='btn btn-danger mb-3' onClick={handleReset}>Limpiar</button>
+                <div className="form-group mb-3">
+                    <label htmlFor="userName">Nombre de Usuario</label>
+                    <input onChange={handleChange} value={form.userName} type="text" className="form-control" id="userName" name="userName" placeholder="nombreDeUsuario" />
+                </div>
+                <div className="form-group mb-3">
+                    <label htmlFor="email">E-Mail</label>
+                    <input onChange={handleChange} value={form.email} type="email" className="form-control" id="email" name='email' aria-describedby="emailHelp" placeholder="usuario@email.com" />
+                    <small id="emailHelp" className="form-text text-muted">Nunca compartimos tu email con nadie más.</small>
+                </div>
+                <div className='d-flex justify-content-around'>
+                    <button className='btn btn-success' onClick={handleSubmit}>Enviar</button>
+                    <button className='btn btn-warning' onClick={handleReset}>Limpiar</button>
+                </div>
             </form>
         </div>
     );
