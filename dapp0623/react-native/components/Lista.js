@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { AuthenticatedUserContext } from '../providers/AuthenticatedUserProvider';
 
 const Lista = () => {
     const listaDeCompras = [
@@ -8,8 +9,11 @@ const Lista = () => {
         { id: 3, nombre: 'carne' }
     ]
 
+    const { user, setUser } = useContext(AuthenticatedUserContext);
+
     return (
         <View style={styles.listContainer}>
+            <Text style={styles.texto}>{user.email} || {user.uid === 'XQzbAHgmeedvzL9ItJqNco50XtF' ? 'Admin' : 'User'}</Text>
             <Text style={styles.texto}>Lista de Compras</Text>
             <FlatList
                 data={listaDeCompras}
