@@ -1,29 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./Login.css";
-import axios from "axios";
-
-async function loginUser(credentials) {
-  // return fetch("http://localhost:8080/login", {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: JSON.stringify(credentials),
-  // })
-  //   .then((data) => data.json())
-  //   .catch((error) => {console.log(error.message)});
-
-  try {
-    const { data } = await axios.post(
-      "http://localhost:8080/login",
-      credentials
-    );
-    return data;
-  } catch (error) {
-    console.log(error.message);
-  }
-}
+import { loginUser } from "../utils/loginUser";
 
 export default function Login({ setToken }) {
   const [username, setUserName] = useState();
@@ -31,30 +9,49 @@ export default function Login({ setToken }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = await loginUser({
-      username,
-      password,
-    });
-    setToken(token);
+
+    const data = await loginUser({username: username, password: password});
+
+    if (data.token) {
+      console.log("usuario logueado", data.token);
+      setToken(data.token)
+    } else {
+      console.log("error al loguearse");
+    }
   };
 
   return (
     <div className="login-wrapper">
-      <h1>Por favor inicie sesión</h1>
+      <h1 className="mb-5">Inicio de Sesión</h1>
       <form onSubmit={handleSubmit} className="login-form">
-        <label>
-          <p>Nombre de Usuario</p>
-          <input type="text" onChange={(e) => setUserName(e.target.value)} />
-        </label>
-        <label>
-          <p>Contraseña</p>
+        <div className="mb-3">
+          <label htmlFor="exampleFormControlInput1" className="form-label">
+            Nombre de Usuario
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="exampleFormControlInput1"
+            placeholder="name.example"
+            onChange={(e) => setUserName(e.target.value)}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="exampleFormControlTextarea1" className="form-label">
+            Contraseña
+          </label>
           <input
             type="password"
+            className="form-control"
+            id="exampleFormControlInput1"
+            placeholder="*********"
             onChange={(e) => setPassword(e.target.value)}
           />
-        </label>
+        </div>
         <div className="button-wrapper">
-          <button type="submit">Enviar</button>
+          <button className="btn btn-success" type="submit">
+            Enviar
+          </button>
         </div>
       </form>
     </div>

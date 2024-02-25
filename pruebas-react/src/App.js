@@ -3,10 +3,16 @@ import "./App.css";
 import Main from "./components/Main";
 import Preferencias from "./components/Preferencias";
 import Login from "./components/Login";
-import useToken from "./hooks/useToken";
+import { useToken } from "./hooks/useToken";
+import { useEffect } from "react";
 
 function App() {
-  const { token, setToken } = useToken();
+  const {token, setToken} = useToken();
+  
+  useEffect(()=>{
+    console.log('token guardado', token)
+  }, [token])
+  // console.log('token app', token)
 
   if (!token) {
     return <Login setToken={setToken} />;
